@@ -60,8 +60,8 @@
       <div class="col-md-8 offset-md-2">
         <h1>Download your ID :</h1>
         <div class="form-group">
-          <label for="roll">Enter your Roll Number:</label>
-          <input type="text" name="roll" id="roll" placeholder="Example: 21CSEL03, 21BCAE10" class="form-control" autofocus>
+          <label for="roll">Enter your Application Number:</label>
+          <input type="text" name="roll" id="roll" placeholder="Example: 23KJ12345" class="form-control" autofocus>
         </div>
         <input type="" value="Download" class="btn" onclick="download()">
       </div>
@@ -80,7 +80,7 @@
 
     function download(){
         var rollno = document.querySelector('#roll').value.toUpperCase().trim();
-        fetch('Shubh-Aarambh.csv')
+        fetch('list.csv')
             .then(response => response.text())
             .then(data => {
               Papa.parse(data,{
@@ -90,7 +90,7 @@
                   // console.log(results);
                   let isValuePresent=false;
                   for(i =0;i< results.data.length;i++){
-                    if(results.data[i].Number === rollno){
+                    if(results.data[i].Application === rollno){
                       isValuePresent= true;
                       break;
                     }
